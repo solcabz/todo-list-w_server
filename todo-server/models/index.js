@@ -1,17 +1,15 @@
-require('dotenv').config(); // Add this line to load environment variables
 const { Sequelize } = require('sequelize');
+const Task = require('./Task');
+const User = require('./User');
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'mysql',
   logging: false,
 });
 
-const Task = require('./Task')(sequelize, Sequelize.DataTypes);
-const User = require('./User')(sequelize, Sequelize.DataTypes);
-
 const models = {
-  Task,
-  User,
+  Task: Task(sequelize, Sequelize.DataTypes),
+  User: User(sequelize, Sequelize.DataTypes),
 };
 
 Object.keys(models).forEach((modelName) => {

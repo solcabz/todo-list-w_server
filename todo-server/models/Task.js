@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database.js'); // Import Sequelize instance
-const User = require('./User')(sequelize, DataTypes); // Import User model
+const User = require('./User.js'); // Import User model
 
 module.exports = (sequelize ,DataTypes) => {
   const Task = sequelize.define('Task', {
